@@ -6,6 +6,7 @@ import {useState} from "react";
 export default function Post({post}) {
  const [like,setLike] = useState(post.like);
  const [isliked,setIsliked] = useState(false);
+ const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
  const likeHandler =()=>{
     setLike(isliked ? like-1 : like+1);
@@ -17,7 +18,7 @@ export default function Post({post}) {
         <div className="postWrapper">
            <div className="postTop">
                 <div className="postTopLeft">
-                    <img src={Users.filter((u) => u.id===post?.userId)[0].profilePicture} alt="" className="postProfileImg" />
+                    <img src={PF+Users.filter((u) => u.id===post?.userId)[0].profilePicture} alt="" className="postProfileImg" />
                     <span className="postUsername">{Users.filter((u) => u.id===post?.userId)[0].username}</span>
                     <span className="postDate">{post.date}</span>
                 </div>
@@ -27,7 +28,7 @@ export default function Post({post}) {
             </div> 
            <div className="postCenter">
                 <span className="postText">{post?.desc}</span>
-                <img className="postImg" src={post.photo} alt="" />
+                <img className="postImg" src={PF+post.photo} alt="" />
             </div> 
            <div className="postBottom">
                <div className="postBottomLeft">
